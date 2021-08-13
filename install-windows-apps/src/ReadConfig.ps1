@@ -3,7 +3,7 @@
     Reads in a JSON configuration file
 #>
 
-$configFile = $PSScriptRoot + '\config.json'
+$configFile = $PSScriptRoot + '\..\etc\config.json'
 
 if ( [System.IO.File]::Exists( $configFile ) -eq $false )
 {

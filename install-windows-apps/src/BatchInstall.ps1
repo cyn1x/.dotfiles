@@ -48,13 +48,13 @@ Function Install-Apps
 
         if ( $AppList -eq $dismAppList )
         {
-            Write-Host "DISM features specified"
+            Write-Host "DISM features specified" -ForegroundColor Green
 
             $additionalArgs = '--source windowsfeatures'
         }
         else
         {
-            Write-Host "Chocolatey apps specified"
+            Write-Host "Chocolatey apps specified" -ForegroundColor Green
         }
 
         foreach ( $app in $appsToInstall )
