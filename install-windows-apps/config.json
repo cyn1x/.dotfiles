@@ -1,0 +1,69 @@
+{
+	"dism": [{
+    "windowsFeatures": [
+      ""
+    ]
+  }
+  ],
+	"apps": [{
+			"core": [
+				""
+			]
+		},
+		{
+			"coreDev": [
+				""
+			]
+		},
+		{
+			"webDev": [
+        ""
+      ]
+		},
+		{
+			"gameDev": [
+        ""
+      ]
+		},
+		{
+			"designTools": [
+        ""
+      ]
+		},
+		{
+			"avTools": [
+        ""
+      ]
+		},
+		{
+			"sysTools": [
+        ""
+      ]
+		},
+    {
+      "productivityTools": [
+        ""
+      ]
+    },
+    {
+      "mediaAggregators": [
+        ""
+      ]
+    },
+    {
+      "moddingTools": [
+        ""
+      ]
+    },
+    {
+      "socialPlatforms": [
+        ""
+      ]
+    },
+    {
+      "gamingPlatforms": [
+        ""
+      ]
+    }
+	]
+}
