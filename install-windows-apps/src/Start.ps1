@@ -1,10 +1,10 @@
 <#
     .Description
-    Automatically installs applications from categories given in the command-line
+    Automatically installs applications from categories given in the command-line.
     .Inputs
     Categories in config.json
     .Example
-    .\App.ps1 core windowsFeatures -q
+    .\Start.ps1 core windowsFeatures -q
 #>
 
 . "$PSScriptRoot\ReadConfig.ps1"
