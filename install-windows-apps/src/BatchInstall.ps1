@@ -21,19 +21,6 @@ if ( $logLevel -eq '-q' )
     $logLevel = '--no-progress'
 }
 
-if ( [string]::IsNullOrWhiteSpace( $chocoAppList ) -eq $false -or [string]::IsNullOrWhiteSpace( $dismAppList ) -eq $false )
-{
-    try
-    {
-        choco config get cacheLocation
-    }
-    catch
-    {
-        Write-Output "Chocolatey not detected, trying to install now"
-        iex ( ( New-Object System.Net.WebClient ).DownloadString( 'https://chocolatey.org/install.ps1' ) )
-    }
-}
-
 Function Install-Apps
 {
     param (
@@ -48,13 +35,13 @@ Function Install-Apps
 
         if ( $AppList -eq $dismAppList )
         {
-            Write-Host "DISM features specified" -ForegroundColor Green
+            Write-Host 'DISM features specified' -ForegroundColor Green
 
             $additionalArgs = '--source windowsfeatures'
         }
         else
         {
-            Write-Host "Chocolatey apps specified" -ForegroundColor Green
+            Write-Host 'Chocolatey apps specified' -ForegroundColor Green
         }
 
         foreach ( $app in $appsToInstall )
@@ -65,5 +52,41 @@ Function Install-Apps
     }
 }
 
-Install-Apps -AppList $chocoAppList
-Install-Apps -AppList $dismAppList
+Function Show-Data
+{
+    if ( [string]::IsNullOrWhiteSpace( $chocoAppList ) -eq $false )
+    {
+        Write-Host "=============== Chocolatey Applications ==============="
+        Write-Host $chocoAppList -Separator ', '
+    }
+    if ( [string]::IsNullOrWhiteSpace( $dismAppList ) -eq $false )
+    {
+        Write-Host "`n`===============    DISM Applications    ==============="
+        Write-Host $dismAppList -Separator ', '
+    }
+
+    # Blank newline after session information
+    Write-Host
+}
+
+if ( [string]::IsNullOrWhiteSpace( $chocoAppList ) -eq $false -or [string]::IsNullOrWhiteSpace( $dismAppList ) -eq $false )
+{
+    try
+    {
+        choco config get cacheLocation
+    }
+    catch
+    {
+        Write-Output "Chocolatey not detected, trying to install now"
+        iex ( ( New-Object System.Net.WebClient ).DownloadString( 'https://chocolatey.org/install.ps1' ) )
+    }
+
+    Show-Data
+
+    Install-Apps -AppList $chocoAppList
+    Install-Apps -AppList $dismAppList
+}
+else
+{
+    throw 'No arguments or applications specified through command-line parameters or config.json'
+}

@@ -71,9 +71,4 @@ if ( $args -contains '--all-apps' )
 $chocoAppList = $installList.appsList
 $dismAppList = $installList.dismList
 
-Write-Host "=============== Chocolatey Applications ==============="
-Write-Host $chocoAppList -Separator ', '
-Write-Host "`n`===============    DISM Applications    ==============="
-Write-Host $dismAppList`n`
-
 Invoke-Expression "$PSScriptRoot\BatchInstall.ps1 ""$chocoAppList"" ""$dismAppList"" ""$logLevel"""

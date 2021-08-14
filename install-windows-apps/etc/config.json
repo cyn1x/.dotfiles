@@ -1,69 +1,43 @@
 {
 	"dism": [{
-    "windowsFeatures": [
-      ""
-    ]
+    "windowsFeatures": []
   }
   ],
 	"apps": [{
-			"core": [
-				""
-			]
+			"core": []
 		},
 		{
-			"coreDev": [
-				""
-			]
+			"coreDev": []
 		},
 		{
-			"webDev": [
-        ""
-      ]
+			"webDev": []
 		},
 		{
-			"gameDev": [
-        ""
-      ]
+			"gameDev": []
 		},
 		{
-			"designTools": [
-        ""
-      ]
+			"designTools": []
 		},
 		{
-			"avTools": [
-        ""
-      ]
+			"avTools": []
 		},
 		{
-			"sysTools": [
-        ""
-      ]
+			"sysTools": []
 		},
     {
-      "productivityTools": [
-        ""
-      ]
+      "productivityTools": []
     },
     {
-      "mediaAggregators": [
-        ""
-      ]
+      "mediaAggregators": []
     },
     {
-      "moddingTools": [
-        ""
-      ]
+      "moddingTools": []
     },
     {
-      "socialPlatforms": [
-        ""
-      ]
+      "socialPlatforms": []
     },
     {
-      "gamingPlatforms": [
-        ""
-      ]
+      "gamingPlatforms": []
     }
 	]
 }
