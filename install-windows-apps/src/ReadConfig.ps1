@@ -3,18 +3,27 @@
     Reads in a JSON configuration file
 #>
 
-$configFile = $PSScriptRoot + '\..\etc\config.json'
+Function Read-ConfigFile
+{
+    param (
+        $FilePath
+    )
 
-if ( [System.IO.File]::Exists( $configFile ) -eq $false )
-{
-    throw "Config file does not exist"
-}
+    $fileContents
 
-try
-{
-    $fileContents = $PowerShellObject=Get-Content -Path $configFile | ConvertFrom-Json
-}
-catch
-{
-    Write-Host "Error parsing config"
+    if ( [System.IO.File]::Exists( $filePath ) -eq $false )
+    {
+        throw "Config file does not exist"
+    }
+
+    try
+    {
+        $fileContents = $PowerShellObject=Get-Content -Path $filePath | ConvertFrom-Json
+    }
+    catch
+    {
+        Write-Host "Error parsing config"
+    }
+
+    $fileContents
 }

@@ -9,7 +9,8 @@
 
 . "$PSScriptRoot\ReadConfig.ps1"
 
-$installList = "" | Select-Object -Property appsList, dismList
+$configPath = $PSScriptRoot + '\..\etc\config.json'
+$configFile
 $ArgList
 $logLevel
 
@@ -20,6 +21,8 @@ if ( $args -contains '-q' )
     $logLevel = '-q'
 }
 
+$configFile = Read-ConfigFile -FilePath $configPath
+
 # Strip all flags from the argument list and copy to the application list array
 $ArgList = $args | Where-Object { ( -not ( $_.StartsWith('-' ) ) ) }
 
@@ -29,12 +32,10 @@ Function Add-Apps
     $appValues = $null
     $dismValues = $null
 
-    Write-Host $level
-
     ForEach( $_ in $ArgList )
     {
-        $apps = $fileContents.apps.$_
-        $dism = $fileContents.dism.$_
+        $apps = $configFile.apps.$_
+        $dism = $configFile.dism.$_
         $flag = $_.StartsWith('-')
 
         if ( [string]::IsNullOrWhiteSpace( $apps ) -eq $false -and ( -not ( $flag ) ) )
@@ -47,7 +48,7 @@ Function Add-Apps
         }
         else
         {
-            $err = [string]::Format( "The category ""{0}"" does not exist in {1}",$_, $configFile.Split("\")[-1] )
+            $err = [string]::Format( "The category ""{0}"" does not exist in {1}",$_, $configPath.Split("\")[-1] )
             throw $err
         }
 
@@ -65,7 +66,7 @@ $installList = Add-Apps
 
 if ( $args -contains '--all-apps' )
 {
-    $installList.appsList = $fileContents.apps | Select-Object -ExpandProperty *
+    $installList.appsList = $configFile.apps | Select-Object -ExpandProperty *
 }
 
 $chocoAppList = $installList.appsList
