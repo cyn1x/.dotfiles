@@ -40,7 +40,7 @@ Function Install-Winget-Apps
         foreach ( $app in $appsToInstall )
         {
             Write-Host "Installing $app"
-            & winget install $app /h $logLevel | Write-Output
+            & winget install $app -h | Write-Output
         }
     }
 }
@@ -125,7 +125,7 @@ if (
 
     Show-Data
 
-    # Install-Winget-Apps -AppList $wingetAppList
+    Install-Winget-Apps -AppList $wingetAppList
     # Install-Chocolatey-Apps -AppList $chocoAppList
     # Install-Chocolatey-Apps -AppList $dismAppList
 }

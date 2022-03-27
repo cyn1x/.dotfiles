@@ -74,7 +74,8 @@ $installList = Add-Apps
 
 if ( $args -contains '--all-apps' )
 {
-    $installList.appsList = $configFile.apps | Select-Object -ExpandProperty *
+    $installList.wingetAppList = $configFile.winget.apps | Select-Object -ExpandProperty *
+    $installList.chocoAppList = $configFile.choco.apps | Select-Object -ExpandProperty *
 }
 
 $wingetAppList = $installList.wingetAppList
