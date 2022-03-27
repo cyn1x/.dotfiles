@@ -10,7 +10,8 @@
     https://octopus.com/blog/automate-developer-machine-setup-with-chocolatey
 #>
 
-Param(  
+Param(
+    [string]$wingetAppList,
     [string]$chocoAppList,
     [string]$dismAppList,
     [string]$logLevel
@@ -21,7 +22,30 @@ if ( $logLevel -eq '-q' )
     $logLevel = '--no-progress'
 }
 
-Function Install-Apps
+Function Install-Winget-Apps
+{
+    param (
+        $AppList
+    )
+
+    if ( [string]::IsNullOrWhiteSpace( $appList ) -eq $false )
+    {    
+        $appsToInstall = $appList -split " " | foreach { "$( $_.Trim() )" }
+
+        if ( $AppList -eq $wingetAppList )
+        {
+            Write-Host 'Winget apps specified' -ForegroundColor Green
+        }
+
+        foreach ( $app in $appsToInstall )
+        {
+            Write-Host "Installing $app"
+            & winget install $app /h $logLevel | Write-Output
+        }
+    }
+}
+
+Function Install-Chocolatey-Apps
 {
     param (
         $AppList
@@ -52,24 +76,42 @@ Function Install-Apps
     }
 }
 
-Function Show-Data
+Function Show-Apps
 {
-    if ( [string]::IsNullOrWhiteSpace( $chocoAppList ) -eq $false )
-    {
-        Write-Host "=============== Chocolatey Applications ==============="
-        Write-Host $chocoAppList -Separator ', '
-    }
-    if ( [string]::IsNullOrWhiteSpace( $dismAppList ) -eq $false )
-    {
-        Write-Host "`n`===============    DISM Applications    ==============="
-        Write-Host $dismAppList -Separator ', '
-    }
+    param (
+        $Name,
+        $AppList
+    )
 
-    # Blank newline after session information
-    Write-Host
+    if ( [string]::IsNullOrWhiteSpace( $appList ) -eq $false )
+    {
+        $msg = [string]::Format( "=============== {0} ===============", $name )
+
+        Write-Host $msg
+        Write-Host $appList -Separator ', '
+
+        # Blank newline after name and list applications
+        Write-Host
+    }
 }
 
-if ( [string]::IsNullOrWhiteSpace( $chocoAppList ) -eq $false -or [string]::IsNullOrWhiteSpace( $dismAppList ) -eq $false )
+Function Show-Data
+{
+    # Blank newline before session information
+    Write-Host
+
+    Write-Host "Preparing session data `n"
+
+    Show-Apps -Name "Winget" -AppList $wingetAppList
+    Show-Apps -Name "Chocolatey" -AppList $chocoAppList
+    Show-Apps -Name "DISM" -AppList $dismAppList
+}
+
+if ( 
+    [string]::IsNullOrWhiteSpace( $wingetAppList ) -eq $false -or 
+    [string]::IsNullOrWhiteSpace( $chocoAppList ) -eq $false -or 
+    [string]::IsNullOrWhiteSpace( $dismAppList ) -eq $false
+    )
 {
     try
     {
@@ -83,8 +125,9 @@ if ( [string]::IsNullOrWhiteSpace( $chocoAppList ) -eq $false -or [string]::IsNu
 
     Show-Data
 
-    Install-Apps -AppList $chocoAppList
-    Install-Apps -AppList $dismAppList
+    # Install-Winget-Apps -AppList $wingetAppList
+    # Install-Chocolatey-Apps -AppList $chocoAppList
+    # Install-Chocolatey-Apps -AppList $dismAppList
 }
 else
 {

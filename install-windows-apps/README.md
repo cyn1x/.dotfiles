@@ -1,8 +1,9 @@
 ﻿# install-windows-apps
 
-Installs applications for the Windows Operating System using the Chocolatey package manager.
+Installs applications for the Windows Operating System using the Winget and/or Chocolatey package manager.
 
-The purpose of this is to remove the tedious repetitive work from provisioning or resetting devices at home.
+The purpose of this is to remove the tedious repetitive work from provisioning or resetting devices at home using Microsoft 
+Deployment Toolkit (MDT) or requiring installs out of hours to make use of off-peak internet quota.
 
 ## Installation
 
@@ -20,7 +21,8 @@ Edit the config file in the `etc` directory as per the examples in this README f
 
 ## Usage
 
-Edit the config file by adding Chocolatey package names into the JSON arrays.
+Edit the config file by adding Winget and/or Chocolatey package names into the JSON arrays. The example below uses
+Chocolatey package names.
 
 ```json
   "apps": [{
@@ -68,3 +70,13 @@ The `--all-apps` flag can be passed in to install all Chocolatey applications, b
 ```powershell
 .\Start.ps1 --all-apps windowsFeatures -q > %TEMP%\install-windows-apps.log
 ```
+
+## Resources
+Package names for each package manager can be found at the following locations
+
+### Winget
+https://winget.run/
+https://winstall.app/
+
+### Chocolatey
+https://community.chocolatey.org/packages

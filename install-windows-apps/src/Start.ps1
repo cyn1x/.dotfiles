@@ -28,34 +28,42 @@ $ArgList = $args | Where-Object { ( -not ( $_.StartsWith('-' ) ) ) }
 
 Function Add-Apps
 {
-    $installList = "" | Select-Object -Property appsList, dismList
-    $appValues = $null
-    $dismValues = $null
+    $installList = "" | Select-Object -Property wingetAppList, chocoAppList, chocoDismList
+    $wingetAppValues = $null
+    $chocoAppValues = $null
+    $chocoDismValues = $null
 
     ForEach( $_ in $ArgList )
     {
-        $apps = $configFile.apps.$_
-        $dism = $configFile.dism.$_
+        $wingetApps = $configFile.winget.apps.$_
+        $chocoApps = $configFile.choco.apps.$_
+        $chocoDism = $configFile.choco.dism.$_
         $flag = $_.StartsWith('-')
-
-        if ( [string]::IsNullOrWhiteSpace( $apps ) -eq $false -and ( -not ( $flag ) ) )
+        
+        # The category could be in either winget, choco, or both
+        if ( [string]::IsNullOrWhiteSpace( $chocoApps ) -eq $false -and ( -not ( $flag ) ) )
         {
-            $appValues += $apps | Select-Object
+            $chocoAppValues += $chocoApps | Select-Object
         }
-        elseif ( [string]::IsNullOrWhiteSpace( $dism ) -eq $false -and ( -not ( $flag ) ) )
+        if ( [string]::IsNullOrWhiteSpace( $wingetApps ) -eq $false -and ( -not ( $flag ) ) )
         {
-            $dismValues += $dism | Select-Object
+            $wingetAppValues += $wingetApps | Select-Object
+        }
+        elseif ( [string]::IsNullOrWhiteSpace( $chocoDism ) -eq $false -and ( -not ( $flag ) ) )
+        {
+            $chocoDismValues += $chocoDism | Select-Object
         }
         else
         {
-            $err = [string]::Format( "The category ""{0}"" does not exist in {1}",$_, $configPath.Split("\")[-1] )
-            throw $err
+            $msg = [string]::Format( "The category ""{0}"" does not exist in {1}",$_, $configPath.Split("\")[-1] )
+            Write-Host $msg
         }
 
     }
 
-    $installList.appsList = $appValues
-    $installList.dismList = $dismValues
+    $installList.wingetAppList = $wingetAppValues
+    $installList.chocoAppList = $chocoAppValues
+    $installList.chocoDismList = $chocoDismValues
 
     $installList
 }
@@ -69,7 +77,8 @@ if ( $args -contains '--all-apps' )
     $installList.appsList = $configFile.apps | Select-Object -ExpandProperty *
 }
 
-$chocoAppList = $installList.appsList
-$dismAppList = $installList.dismList
+$wingetAppList = $installList.wingetAppList
+$chocoAppList = $installList.chocoAppList
+$chocoDismList = $installList.chocoDismList
 
-Invoke-Expression "$PSScriptRoot\BatchInstall.ps1 ""$chocoAppList"" ""$dismAppList"" ""$logLevel"""
+Invoke-Expression "$PSScriptRoot\BatchInstall.ps1 ""$wingetAppList"" ""$chocoAppList"" ""$chocoDismList"" ""$logLevel"""

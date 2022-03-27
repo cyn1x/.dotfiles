@@ -1,43 +1,141 @@
 {
-	"dism": [{
-    "windowsFeatures": []
-  }
-  ],
-	"apps": [{
-			"core": []
-		},
-		{
-			"coreDev": []
-		},
-		{
-			"webDev": []
-		},
-		{
-			"gameDev": []
-		},
-		{
-			"designTools": []
-		},
-		{
-			"avTools": []
-		},
-		{
-			"sysTools": []
-		},
-    {
-      "productivityTools": []
-    },
-    {
-      "mediaAggregators": []
-    },
-    {
-      "moddingTools": []
-    },
-    {
-      "socialPlatforms": []
-    },
-    {
-      "gamingPlatforms": []
-    }
-	]
-}
+   "winget":[
+      {
+         "apps":[
+            {
+               "core":[
+
+               ]
+            },
+            {
+               "coreDev":[
+
+               ]
+            },
+            {
+               "webDev":[
+
+               ]
+            },
+            {
+               "gameDev":[
+
+               ]
+            },
+            {
+               "designTools":[
+
+               ]
+            },
+            {
+               "avTools":[
+
+               ]
+            },
+            {
+               "sysTools":[
+
+               ]
+            },
+            {
+               "productivityTools":[
+
+               ]
+            },
+            {
+               "mediaAggregators":[
+
+               ]
+            },
+            {
+               "moddingTools":[
+                  
+               ]
+            },
+            {
+               "socialPlatforms":[
+
+               ]
+            },
+            {
+               "gamingPlatforms":[
+
+               ]
+            }
+         ]
+      }
+   ],
+   "choco":[
+      {
+         "dism":[
+            {
+               "windowsFeatures":[
+
+               ]
+            }
+         ],
+         "apps":[
+            {
+               "core":[
+                  
+               ]
+            },
+            {
+               "coreDev":[
+                  
+               ]
+            },
+            {
+               "webDev":[
+                  
+               ]
+            },
+            {
+               "gameDev":[
+                  
+               ]
+            },
+            {
+               "designTools":[
+                  
+               ]
+            },
+            {
+               "avTools":[
+                  
+               ]
+            },
+            {
+               "sysTools":[
+                  
+               ]
+            },
+            {
+               "productivityTools":[
+
+               ]
+            },
+            {
+               "mediaAggregators":[
+
+               ]
+            },
+            {
+               "moddingTools":[
+               ]
+            },
+            {
+               "socialPlatforms":[
+                  
+               ]
+            },
+            {
+               "gamingPlatforms":[
+                  
+               ]
+            }
+         ]
+      }
+   ]
+ }
+ 
