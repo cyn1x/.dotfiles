@@ -126,8 +126,8 @@ if (
     Show-Data
 
     Install-Winget-Apps -AppList $wingetAppList
-    # Install-Chocolatey-Apps -AppList $chocoAppList
-    # Install-Chocolatey-Apps -AppList $dismAppList
+    Install-Chocolatey-Apps -AppList $chocoAppList
+    Install-Chocolatey-Apps -AppList $dismAppList
 }
 else
 {
