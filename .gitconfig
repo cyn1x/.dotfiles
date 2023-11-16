@@ -1,0 +1,8 @@
+[user]
+	name = Zac Vukovic
+	email = 26176372+cyn1x@users.noreply.github.com
+[difftool "sourcetree"]
+	cmd = "'' "
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
