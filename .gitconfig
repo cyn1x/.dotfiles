@@ -1,3 +1,5 @@
+[core]
+    editor = vim
 [user]
 	name = Zac Vukovic
 	email = 26176372+cyn1x@users.noreply.github.com
