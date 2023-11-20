@@ -50,4 +50,3 @@ lspconfig.lua_ls.setup {
 }
 
 require 'nvim-treesitter.install'.compilers = { "cl", "clang", "gcc" }
-

@@ -46,4 +46,3 @@ vim.g.mapleader = " "
 
 vim.o.exrc = true
 vim.o.secure = true
-

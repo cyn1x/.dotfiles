@@ -14,4 +14,3 @@ vim.keymap.set("n", "<leader><leader>x", function()
         error("Platform not supported", 2)
     end
 end)
-
