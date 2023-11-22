@@ -1,4 +1,9 @@
-require('outhouse').setup{
+-- This plugin doesn't have to be enabled for every project
+if not vim.g.output_bufnr then
+    return
+end
+
+require('outhouse').setup {
     auto_start = true,
     vertical = true
 }
