@@ -9,4 +9,3 @@ apt-get install build-essential --fix-missing
 apt-get install unzip
 apt-get install tmux
 apt-get install golang-go
-
