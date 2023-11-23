@@ -1,9 +1,7 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
--- Load user config
-vim.o.exrc = true
-vim.o.secure = true
+require('util')
 
 -- Make cursor blink when inactive
 vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50" ..
@@ -45,15 +43,7 @@ vim.o.backup = false
 vim.o.swapfile = false
 -- Save undo history
 vim.o.undofile = true
-vim.o.undodir = (function()
-    if vim.fn.has("win32") == 1 then
-        return os.getenv("USERPROFILE")
-    elseif vim.fn.has("unix") == 1 then
-        return os.getenv("HOME")
-    else
-        return nil
-    end
-end)() .. "/.vim/undodir"
+vim.o.undodir = GetEnv() .. "/.vim/undodir"
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
@@ -75,6 +65,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
+
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true

@@ -1,16 +1,23 @@
 -- This plugin doesn't have to be enabled for every project
-if not vim.g.output_bufnr then
+local function load()
+    require('outhouse').setup {
+        auto_start = true,
+        vertical = true
+    }
+end
+
+-- The local plugin might not exist if not using my personal device(s)
+--  for local plugin development
+local status, err = pcall(load)
+
+_ = err
+if status == false then
     return
 end
 
-require('outhouse').setup {
-    auto_start = true,
-    vertical = true
-}
-
 local handler = require('outhouse.handler')
 
-vim.keymap.set("n", "<leader><leader>x", function()
+vim.keymap.set("n", "<leader>cx", function()
     if vim.fn.has("win32") == 1 then
         handler.subprocess(vim.g.win32_build_filename)
     elseif vim.fn.has("unix") == 1 then
