@@ -3,6 +3,10 @@
 
 require('util')
 
+-- Load user config
+vim.o.exrc = true
+vim.o.secure = true
+
 -- Make cursor blink when inactive
 vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50" ..
     ",a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor" ..
@@ -65,9 +69,6 @@ vim.o.completeopt = 'menuone,noselect'
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
