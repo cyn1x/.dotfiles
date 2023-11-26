@@ -1,7 +1,7 @@
 -- This plugin doesn't have to be enabled for every project
 local function load()
     require('outhouse').setup {
-        auto_start = true,
+        auto_start = false,
         vertical = true
     }
 end
