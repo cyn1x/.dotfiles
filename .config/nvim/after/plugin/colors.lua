@@ -12,7 +12,7 @@ function SetColorScheme(color)
     -- The theme does not have to be defined on each machine
     pcall(get_theme)
 
-    color = theme or color or 'kanagawa-dragon'
+    color = theme or color or 'kanagawa-wave'
     vim.cmd.colorscheme(color)
 end
 
