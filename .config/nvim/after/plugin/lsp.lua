@@ -74,6 +74,7 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
+  emmet_language_server = {},
 
   lua_ls = {
     Lua = {
