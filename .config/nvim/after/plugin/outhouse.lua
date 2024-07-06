@@ -10,9 +10,8 @@ end
 -- The local plugin might not exist if not using my personal device(s)
 --  for local plugin development
 local status, err = pcall(load)
-
-_ = err
 if status == false then
+    error(err)
     return
 end
 
