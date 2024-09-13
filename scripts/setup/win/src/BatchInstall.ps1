@@ -107,8 +107,12 @@ Function Show-Data
     Show-Apps -Name "DISM" -AppList $dismAppList
 }
 
+if ([string]::IsNullOrWhiteSpace( $wingetAppList ) -eq $false)
+{
+    Install-Winget-Apps -AppList $wingetAppList
+}
+
 if ( 
-    [string]::IsNullOrWhiteSpace( $wingetAppList ) -eq $false -or 
     [string]::IsNullOrWhiteSpace( $chocoAppList ) -eq $false -or 
     [string]::IsNullOrWhiteSpace( $dismAppList ) -eq $false
     )
@@ -125,7 +129,6 @@ if (
 
     Show-Data
 
-    Install-Winget-Apps -AppList $wingetAppList
     Install-Chocolatey-Apps -AppList $chocoAppList
     Install-Chocolatey-Apps -AppList $dismAppList
 }
