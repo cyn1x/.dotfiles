@@ -132,7 +132,3 @@ if (
     Install-Chocolatey-Apps -AppList $chocoAppList
     Install-Chocolatey-Apps -AppList $dismAppList
 }
-else
-{
-    throw 'No arguments or applications specified through command-line parameters or config.json'
-}
