@@ -11,7 +11,6 @@ end
 --  for local plugin development
 local status, err = pcall(load)
 if status == false then
-    error(err)
     return
 end
 
