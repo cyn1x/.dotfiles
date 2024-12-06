@@ -11,7 +11,13 @@ Start-Process powershell.exe 'Get-AppxPackage *Microsoft.WindowsMaps* | Remove-A
 Start-Process powershell.exe 'Get-AppxPackage *Disney* | Remove-AppxPackage' -NoNewWindow -PassThru -wait
 
 # Remove Startup Items
+Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "OneDrive" -ErrorAction SilentlyContinue
 Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "Steam" -ErrorAction SilentlyContinue
+Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "Discord" -ErrorAction SilentlyContinue
+Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "com.squirrel.slack.slack" -ErrorAction SilentlyContinue
+Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "TIDAL" -ErrorAction SilentlyContinue
+Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "electron.app.Notion" -ErrorAction SilentlyContinue
+Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "org.whispersystems.signal-desktop" -ErrorAction SilentlyContinue
 
 # Remove Desktop Shortcut Icons
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
