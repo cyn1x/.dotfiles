@@ -8,7 +8,7 @@ local dir = GetEnv()
 if vim.fn.isdirectory(dir) ~= 0 then
   vim.opt.runtimepath:append(("~/.nvim/plugins/outhouse.nvim"))
   return {
-    dir .. 'outhouse.nvim',
+    'outhouse.nvim',
     dev = true
   }
 else
