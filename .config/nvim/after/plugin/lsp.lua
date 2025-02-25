@@ -76,13 +76,13 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  clangd = {},
+  html = {},
+  eslint = {},
+  cssls = {},
   gopls = {},
   pyright = {},
+  clangd = {},
   rust_analyzer = {},
-  eslint = {},
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
-  emmet_language_server = {},
 
   lua_ls = {
     Lua = {
