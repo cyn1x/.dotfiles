@@ -45,6 +45,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Only attach to clients that support document formatting
     if not client.server_capabilities.documentFormattingProvider then
+      -- Hack to get ESlint to auto format on save
+      if client.name == 'eslint' then
+        vim.api.nvim_create_autocmd('BufWritePre', {
+          command = 'silent! EslintFixAll',
+          group = get_augroup(client),
+        })
+      end
       return
     end
 
