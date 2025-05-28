@@ -79,6 +79,7 @@ local servers = {
   html = {},
   eslint = {},
   cssls = {},
+  csharp_ls = {},
   ts_ls = {},
   gopls = {},
   pyright = {},
