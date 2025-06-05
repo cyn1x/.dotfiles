@@ -81,7 +81,6 @@ local servers = {
   cssls = {},
   csharp_ls = {},
   ts_ls = {},
-  gopls = {},
   pyright = {},
   clangd = {},
   rust_analyzer = {},

@@ -15,3 +15,11 @@ After the standard clone without the `--recurse-submodules` flag, clone specific
 ```cmd
 git submodule update --init <submodule>
 ```
+
+## Usage
+
+To add further submodules, use the command below where `<submodule>` is the SSH target of the repo.
+
+```cmd
+git submodule add <submodule> <dir>
+```
