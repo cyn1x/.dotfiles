@@ -36,3 +36,7 @@ Get-ChildItem $DesktopPath -Filter *.lnk | Foreach-Object {
 # Disable Cortana & Bing Search
 Reg Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /V "CortanaEnabled" /T REG_DWORD /D 0 /F
 Reg Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /V "BingSearchEnabled" /T REG_DWORD /D 0 /F
+
+# Enable optional Windows features
+Enable-WindowsOptionalFeature -Online -FeatureName TelnetClient
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All

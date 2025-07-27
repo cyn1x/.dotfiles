@@ -40,7 +40,7 @@ Function Install-Winget-Apps
         foreach ( $app in $appsToInstall )
         {
             Write-Host "Installing $app"
-            & winget install $app -h | Write-Output
+            & winget install $app --silent --accept-source-agreements
         }
     }
 }
@@ -71,7 +71,7 @@ Function Install-Chocolatey-Apps
         foreach ( $app in $appsToInstall )
         {
             Write-Host "Installing $app"
-            & choco install $app /y $additionalArgs $logLevel | Write-Output
+            & choco install $app /y $additionalArgs $logLevel
         }
     }
 }
